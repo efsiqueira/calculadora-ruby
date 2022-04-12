@@ -43,10 +43,10 @@ class Calculadora
         print "\nInforme o primeiro valor: "
         primeiro_valor = gets
 
-        print "\nInforme o segundo valor: "
+        print "\nInforme o segundo valor: " 
         segundo_valor = gets
 
-        break if !numeros_validos
+        break if primeiro_valor || segundo_valor !=~ /^-?[0-9]+$/
 
         case operacao
             when 1
