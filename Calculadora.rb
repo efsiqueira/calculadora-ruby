@@ -33,30 +33,20 @@ class Calculadora
         @primeiro_valor ** @segundo_valor
     end
 
+    puts "\t\t\tCalculadora\n-------------------------------------------------------------------"
+
     loop do
 
-        puts "\nInforme qual operação deseja utilizar: (\n1 - Soma, \n2 - Subtração, \n3 - Divisão, \n4 - Multiplicação, \n5 - Porcentagem (o primeiro valor é a % do segundo), \n6 - Módulo, \n7 - Potência, \n0 - Sair\n)"
-        operacao = gets.strip.to_i
+        puts "\nInforme qual operação deseja utilizar: \n(1) Soma \n(2) Subtração \n(3) Divisão \n(4) Multiplicação \n(5) Porcentagem (o primeiro valor é a % do segundo) \n(6) Módulo \n(7) Potência \n(0) Sair"
+        operacao = gets.to_i
 
         break if operacao == 0
         
         print "\nInforme o primeiro valor: "
-        primeiro_valor = gets
+        primeiro_valor = gets.to_f
 
-        if primeiro_valor =~ /^-?[0-9]+$/
-            print "\nInforme o segundo valor: " 
-            segundo_valor = gets
-
-            if segundo_valor =~ /^-?[0-9]+$/
-                puts "Calculando..."
-            else
-                puts "Valor inválido, desligando a calculadora..."
-                exit(1)
-            end
-        else
-            puts "Valor inválido, desligando a calculadora..."
-            exit(1)
-        end
+        print "\nInforme o segundo valor: " 
+        segundo_valor = gets.to_f
 
         case operacao
             when 1
