@@ -22,7 +22,7 @@ class Calculadora
     end    
 
     def porcentagem
-        (@primeiro_valor / @segundo_valor) * 100
+        (@segundo_valor * @primeiro_valor) / 100
     end
 
     def modulo
@@ -35,18 +35,28 @@ class Calculadora
 
     loop do
 
-        puts "\nInforme qual operação deseja utilizar: (\n1 - Soma, \n2 - Subtração, \n3 - Divisão, \n4 - Multiplicação, \n5 - Porcentagem, \n6 - Módulo, \n7 - Potência, \n0 - Sair\n)"
+        puts "\nInforme qual operação deseja utilizar: (\n1 - Soma, \n2 - Subtração, \n3 - Divisão, \n4 - Multiplicação, \n5 - Porcentagem (o primeiro valor é a % do segundo), \n6 - Módulo, \n7 - Potência, \n0 - Sair\n)"
         operacao = gets.strip.to_i
 
         break if operacao == 0
-
+        
         print "\nInforme o primeiro valor: "
         primeiro_valor = gets
 
-        print "\nInforme o segundo valor: " 
-        segundo_valor = gets
+        if primeiro_valor =~ /^-?[0-9]+$/
+            print "\nInforme o segundo valor: " 
+            segundo_valor = gets
 
-        break if primeiro_valor || segundo_valor !=~ /^-?[0-9]+$/
+            if segundo_valor =~ /^-?[0-9]+$/
+                puts "Calculando..."
+            else
+                puts "Valor inválido, desligando a calculadora..."
+                exit(1)
+            end
+        else
+            puts "Valor inválido, desligando a calculadora..."
+            exit(1)
+        end
 
         case operacao
             when 1
